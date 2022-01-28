@@ -2,20 +2,24 @@
     <transition
         appear
         name="fade"
-        @before-enter="beforeEnter"
-        @enter="enter"
+        @enter="headerEnter"
     >
         <div class="header">
             <div class="header-title">
                 <span class="header-title-text">Vue x GSAP</span>
             </div>
-            <div class="links-container">
-                <div class="links">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+            <transition
+                appear
+                @enter="linksEnter"
+            >
+                <div class="links-container">
+                    <div class="links">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
                 </div>
-            </div>
+            </transition>
         </div>
     </transition>
 </template>
@@ -25,23 +29,25 @@ import gsap from 'gsap'
 
 export default {
     setup() {
-        const beforeEnter = (el) => {
-            console.log("Before enter")
-            el.style.transform = "translateY(-60px)"
-            el.style.opacity = 0
-        }
-
-        const enter = (el, done) => {
-            console.log("Starting to enter")
-            gsap.to(el,{
-                duration:1,
-                y:0,
-                opacity: 1,
-                ease: "bounce.out",
+        const headerEnter = (el, done) => {
+            gsap.from(el, {
+                duration: 1,
+                opacity: 0,
+                y: '-100%',
+                ease: "Power0.easeOut",
                 onComplete: done
             })
         }
-        return { beforeEnter, enter }
+
+        const linksEnter = (el, done) => {
+            gsap.from(el, {
+                duration: 1,
+                opacity: 0,
+                delay: 1,
+                onComplete: done
+            })
+        }
+        return { headerEnter, linksEnter }
     }
 }
 </script>
