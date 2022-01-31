@@ -1,16 +1,59 @@
 <template>
-    <div class="panels-container">
-        <div class="panels-grid">
-            <div class="card">Panel 1</div>
-            <div class="card">Panel 2</div>
-            <div class="card">Panel 3</div>
-            <div class="card">Panel 3</div>
-        </div>
+    <div class="panels">
+        <transition-group
+            tag="div"
+            class="panels-grid"
+            appear
+            @before-enter="beforeEnter"
+            @enter="enter"
+        >
+            <div
+                v-for="(panel, index) in panels"
+                :key="panel.name"
+                class="card"
+                :data-index="index"
+            >
+                <div>{{ panel.name }}</div>
+            </div>
+        </transition-group>
     </div>
 </template>
 
+<script>
+import { ref } from 'vue'
+import gsap from 'gsap'
+
+export default {
+    setup() {
+        const panels = ref([
+            { name: "Panel 1" },
+            { name: "Panel 2" },
+            { name: "Panel 3" },
+            { name: "Panel 4" }
+        ])
+
+    const beforeEnter = (el) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(100px)'
+    }
+
+    const enter = (el, done) => {
+        gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            onComplete: done,
+            delay: 1 + el.dataset.index * 0.2
+        })
+    }
+
+        return { panels, beforeEnter, enter }
+    }
+}
+</script>
+
 <style scoped>
-.panels-container {
+.panels {
     padding-top: 1rem;
     display: flex;
     align-items: center;
