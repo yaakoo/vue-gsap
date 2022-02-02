@@ -54,10 +54,11 @@ export default {
 
         const circleEnter = (el) => {
             gsap.set(el, {   
-                y:350
+                y: '-100vh'
             })
             const tl = gsap.timeline({delay:5})
             tl
+                .to(el, {y: 350})
                 .to(el, {y:0, duration: 0.5})
                 .to(el, {y:350, duration: 1.25, ease: "bounce.out"})
                 .to(el, {x:"+=450", duration: 2.5}, "-=1.75")
