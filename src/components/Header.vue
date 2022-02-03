@@ -25,20 +25,22 @@
 </template>
 
 <script>
-import gsap from 'gsap'
+import gsap from "gsap"
 
 export default {
     setup() {
+        // ヘッダーが上から落ちてくるアニメーション
         const headerEnter = (el, done) => {
             gsap.from(el, {
-                duration: 1,
                 opacity: 0,
-                y: '-100%',
+                duration: 1,
+                y: "-100%",
                 ease: "Power0.easeOut",
                 onComplete: done
             })
         }
 
+        // リンクがフェイドインするアニメーション
         const linksEnter = (el, done) => {
             gsap.from(el, {
                 duration: 1,

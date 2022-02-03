@@ -1,21 +1,23 @@
 <template>
-  <Header />
-  <Banner />
-  <Panels />
+  <div id="nav">
+    <Header />
+    <Banner />
+    <Panels />
+  </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Banner from './components/Banner.vue'
-import Panels from './components/Panels.vue'
+import Header from "./components/Header.vue"
+import Banner from "./components/Banner.vue"
+import Panels from "./components/Panels.vue"
 
 export default {
-  name: 'App',
-  components: {
-    Header,
-    Banner,
-    Panels
-  }
+    name: "App",
+    components: {
+        Header,
+        Banner,
+        Panels
+    }
 }
 </script>
 

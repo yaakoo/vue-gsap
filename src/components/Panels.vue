@@ -20,11 +20,12 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import gsap from 'gsap'
+import { ref } from "vue"
+import gsap from "gsap"
 
 export default {
     setup() {
+        // 表示するパネルの設定
         const panels = ref([
             { name: "Panel 1" },
             { name: "Panel 2" },
@@ -32,20 +33,22 @@ export default {
             { name: "Panel 4" }
         ])
 
-    const beforeEnter = (el) => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(100px)'
-    }
+        // パネルのスタート位置設定
+        const beforeEnter = (el) => {
+            el.style.opacity = 0
+            el.style.transform = "translateY(100px)"
+        }
 
-    const enter = (el, done) => {
-        gsap.to(el, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            onComplete: done,
-            delay: 1 + el.dataset.index * 0.2
-        })
-    }
+        // パネルのアニメーション設定
+        const enter = (el, done) => {
+            gsap.to(el, {
+                opacity: 1,
+                duration: 0.8,
+                y: 0,
+                delay: 1 + el.dataset.index * 0.2,
+                onComplete: done
+            })
+        }
 
         return { panels, beforeEnter, enter }
     }
