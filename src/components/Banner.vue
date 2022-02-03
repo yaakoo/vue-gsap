@@ -41,7 +41,7 @@ export default {
             { phrase: "Meets" },
             { phrase: "GSAP" },
         ])
-
+        // テキストのスタート設定
         const textBeforeEnter = (el) => {
             gsap.set(el, {
                 y: "-100%",

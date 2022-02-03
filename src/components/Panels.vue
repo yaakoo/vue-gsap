@@ -33,7 +33,7 @@ export default {
             { name: "Panel 4" }
         ])
 
-        // パネルのスタート位置設定
+        // パネルのスタート設定
         const panelsBeforeEnter = (el) => {
             gsap.set(el, {
                 y: 100,
