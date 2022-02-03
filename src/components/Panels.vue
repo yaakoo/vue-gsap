@@ -4,8 +4,8 @@
             tag="div"
             class="panels-grid"
             appear
-            @before-enter="beforeEnter"
-            @enter="enter"
+            @before-enter="panelsBeforeEnter"
+            @enter="panelsEnter"
         >
             <div
                 v-for="(panel, index) in panels"
@@ -34,13 +34,15 @@ export default {
         ])
 
         // パネルのスタート位置設定
-        const beforeEnter = (el) => {
-            el.style.opacity = 0
-            el.style.transform = "translateY(100px)"
+        const panelsBeforeEnter = (el) => {
+            gsap.set(el, {
+                y: 100,
+                opacity: 0
+            })
         }
 
         // パネルのアニメーション設定
-        const enter = (el, done) => {
+        const panelsEnter = (el, done) => {
             gsap.to(el, {
                 opacity: 1,
                 duration: 0.8,
@@ -50,7 +52,7 @@ export default {
             })
         }
 
-        return { panels, beforeEnter, enter }
+        return { panels, panelsBeforeEnter, panelsEnter }
     }
 }
 </script>

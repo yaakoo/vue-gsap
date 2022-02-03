@@ -4,6 +4,7 @@
             tag="div"
             class="text-container"
             appear
+            @before-enter="textBeforeEnter"
             @enter="textEnter"
         >
             <div
@@ -21,8 +22,6 @@
             <transition
                 tag="div"
                 appear
-                @before-enter="circleBeforeEnter"
-                @enter="circleEnter"
             >
                 <img class="circle" src="../assets/circle.svg" alt="Circle"/>
             </transition>
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import { ref } from "vue"
+import { ref, onMounted } from "vue"
 import gsap from "gsap"
 
 export default {
@@ -43,40 +42,48 @@ export default {
             { phrase: "GSAP" },
         ])
 
+        const textBeforeEnter = (el) => {
+            gsap.set(el, {
+                y: "-100%",
+                opacity: 0
+            })
+        }
+
         // テキストが上から落ちてくるアニメーション
         const textEnter = (el, done) => {
-            gsap.from(el, {
-                opacity: 0,
+            gsap.to(el, {
+                opacity: 1,
                 duration: 1,
-                y: "-100%",
+                y: "0",
                 ease: "bounce.out",
                 // テキストを0.4秒ずつずらして上から落とす
                 delay: 2 + 0.4 * (lines.value.length - el.dataset.index),
                 onComplete: done,
             })
         }
+        const tl = gsap.timeline( { delay:5 } ) // アニメーションのタイムライン
 
-        // ボールが上から落ちてくるアニメーションのスタート位置設定
-        const circleBeforeEnter = (el) => {
-            el.style.transform = "translateY(-100vh)"
-        }
+        onMounted(() => {
+            // ボールが上から落ちてくるアニメーションのスタート位置設定
+            gsap.set(".circle", {
+                y: "-100%"
+            })
 
-        // ボールが上から落ちて跳ねるアニメーション
-        const circleEnter = (el) => {
-            const tl = gsap.timeline( {delay:5} ) // アニメーションのタイムライン
+            // ボールが上から落ちて跳ねるアニメーション
             const screenWidth = window.innerWidth // 画面の横幅
-            const elementWidth = el?.getBoundingClientRect().right // ボールの横幅
+            const elementWidth = document.querySelector(".circle").getBoundingClientRect().right // ボールの横幅
 
             // ボールのアニメーションの設定
             tl
-                .to(el, {y: 350} )
-                .to(el, {y:0, duration: 0.5} )
-                .to(el, {y:350, duration: 1.25, ease: "bounce.out"})
-                .to(el, {x: screenWidth - elementWidth - 10, duration: 2.5}, "-=1.75")
-                .to(el, {x:0, duration: 1}, "+=1")
-                .call(circleEnter)
-        }
-        return { lines, textEnter, circleEnter, circleBeforeEnter }
+                .to(".circle", { y: 350 } )
+                .to(".circle", { y: 0, duration: 0.5 } )
+                .to(".circle", { y: 350, duration: 1.25, ease: "bounce.out" })
+                .to(".circle", { x: screenWidth - elementWidth - 10, duration: 2.5 }, "-=1.75")
+                .to(".circle", { x: 0, duration: 1 }, "+=1")
+                
+        })
+        
+        return { lines, textEnter, textBeforeEnter }
     }
 }
 </script>
