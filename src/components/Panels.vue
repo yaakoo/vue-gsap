@@ -1,27 +1,22 @@
 <template>
     <div class="panels">
-        <transition-group
-            tag="div"
+        <div
             class="panels-grid"
-            appear
-            @before-enter="panelsBeforeEnter"
-            @enter="panelsEnter"
         >
             <div
                 v-for="(panel, index) in panels"
                 :key="panel.name"
-                class="card"
+                class="panel"
                 :data-index="index"
             >
                 <div>{{ panel.name }}</div>
             </div>
-        </transition-group>
+        </div>
     </div>
 </template>
 
 <script>
 import { ref } from "vue"
-import gsap from "gsap"
 
 export default {
     setup() {
@@ -33,26 +28,8 @@ export default {
             { name: "Panel 4" }
         ])
 
-        // パネルのスタート設定
-        const panelsBeforeEnter = (el) => {
-            gsap.set(el, {
-                y: 100,
-                opacity: 0
-            })
-        }
-
-        // パネルのアニメーション設定
-        const panelsEnter = (el, done) => {
-            gsap.to(el, {
-                opacity: 1,
-                duration: 0.8,
-                y: 0,
-                delay: 1 + el.dataset.index * 0.2,
-                onComplete: done
-            })
-        }
-
-        return { panels, panelsBeforeEnter, panelsEnter }
+        // アニメーションコードをここに追加 
+        return { panels }
     }
 }
 </script>
@@ -72,7 +49,7 @@ export default {
     max-width: 1200px;
 }
 
-.card {
+.panel {
     height: 14rem;
     width: 12rem;
     text-align: center;
