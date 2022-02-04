@@ -54,7 +54,7 @@ export default {
     position: absolute
 }
 
-.circle img {
+.circle {
     width: 9rem;
     height: 9rem;
     top: 20rem;
@@ -67,7 +67,7 @@ export default {
 }
 
 @media (max-width: 1024px) {
-    .circle img {
+    .circle {
         width: 7.5rem;
         height: 7.5rem;
         top: 3.5rem;
