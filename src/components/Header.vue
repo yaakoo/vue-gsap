@@ -3,18 +3,13 @@
         <div class="header-title">
             <span class="header-title-text">Vue x GSAP</span>
         </div>
-        <transition
-            appear
-            @enter="linksEnter"
-        >
-            <div class="links-container">
-                <div class="links">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
+        <div class="links-container">
+            <div class="links">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
             </div>
-        </transition>
+        </div>
     </div>
 </template>
 
