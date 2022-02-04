@@ -1,4 +1,4 @@
-# vue-gsap3
+# Vue x GSAPスターターキット
 
 ## Project setup
 ```
