@@ -31,8 +31,7 @@ export default {
             { phrase: "Meets" },
             { phrase: "GSAP" },
         ])
-        
-        
+
         return { lines }
     }
 }
@@ -55,10 +54,10 @@ export default {
     position: absolute
 }
 
-.circle {
+.circle img {
     width: 9rem;
     height: 9rem;
-    top: -1.2rem;
+    top: 20rem;
 }
 
 @media (max-width: 640px) {
@@ -68,7 +67,7 @@ export default {
 }
 
 @media (max-width: 1024px) {
-    .circle {
+    .circle img {
         width: 7.5rem;
         height: 7.5rem;
         top: 3.5rem;
