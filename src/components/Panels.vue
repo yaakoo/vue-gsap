@@ -1,8 +1,6 @@
 <template>
     <div class="panels">
-        <div
-            class="panels-grid"
-        >
+        <div class="panels-grid">
             <div
                 v-for="(panel, index) in panels"
                 :key="panel.name"
