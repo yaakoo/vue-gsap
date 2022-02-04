@@ -13,8 +13,8 @@
             </div>
         </div>
         <div class="shape-container">
-            <div class="circle"> 
-                <img src="../assets/circle.svg" alt="Circle"/>
+            <div> 
+                <img class="circle" src="../assets/circle.svg" alt="Circle"/>
             </div>
         </div>
     </div>
@@ -50,18 +50,15 @@ export default {
     line-height: normal;
 }
 
-.shape-container img {
-    position: absolute
-}
-
 .circle {
+    position: absolute;
     width: 9rem;
     height: 9rem;
     top: 20rem;
 }
 
 @media (max-width: 640px) {
-    .shape-container img {
+    .circle {
         display: none;
     }
 }
