@@ -4,7 +4,7 @@
             <div
                 v-for="(line, index) in lines"
                 :key="line.phrase"
-                class="text-container"
+                class="text"
                 :data-index="index"
             >
                 <div>
@@ -45,7 +45,7 @@ export default {
     margin-top: 7.6rem;
 }
 
-.text-container {
+.text {
     font-size: 5rem;
     line-height: normal;
 }
