@@ -4,7 +4,7 @@
             <div
                 v-for="(line, index) in lines"
                 :key="line.phrase"
-                class="card"
+                class="text-container"
                 :data-index="index"
             >
                 <div>

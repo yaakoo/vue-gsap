@@ -1,13 +1,15 @@
 <template>
     <div class="header">
-        <div class="header-title">
-            <span class="header-title-text">Vue x GSAP</span>
-        </div>
-        <div class="links-container">
-            <div class="links">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+        <div class="header-container">
+            <div class="header-title">
+                <span class="header-title-text">Vue x GSAP</span>
+            </div>
+            <div class="links-container">
+                <div class="links">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
             </div>
         </div>
     </div>
@@ -23,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.header {
+.header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
