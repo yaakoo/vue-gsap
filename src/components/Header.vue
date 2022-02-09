@@ -18,12 +18,7 @@
 </template>
 
 <script>
-
-export default {
-    setup() {
-        // アニメーションコードをここに追加   
-    }
-}
+// ここにGSAPのインポートとアニメーションのメソッドを追加
 </script>
 
 <style scoped>
