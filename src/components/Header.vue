@@ -1,5 +1,6 @@
 <template>
     <div class="header">
+        <!--ここからtransitionコードを開始-->
         <div class="header-container">
             <div class="header-title">
                 <span class="header-title-text">Vue x GSAP</span>
@@ -12,6 +13,7 @@
                 </div>
             </div>
         </div>
+        <!--ここでtransitionをクローズ-->
     </div>
 </template>
 
