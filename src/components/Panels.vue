@@ -1,5 +1,6 @@
 <template>
     <div class="panels">
+        <!--ここからtransitionコードを開始-->
         <div class="panels-grid">
             <div
                 v-for="(panel, index) in panels"
@@ -10,11 +11,13 @@
                 <div>{{ panel.name }}</div>
             </div>
         </div>
+        <!--ここでtransitionをクローズ-->
     </div>
 </template>
 
 <script>
 import { ref } from "vue"
+// ここにGSAPのインポートを追加
 
 export default {
     setup() {
@@ -26,7 +29,7 @@ export default {
             { name: "Panel 4" }
         ])
 
-        // アニメーションコードをここに追加 
+        // ここにアニメーションのメソッドを追加
         return { panels }
     }
 }
