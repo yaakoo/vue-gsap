@@ -31,7 +31,7 @@ export default {
             { phrase: "Meets" },
             { phrase: "GSAP" },
         ])
-
+        // ここにアニメーションを追加
         return { lines }
     }
 }
