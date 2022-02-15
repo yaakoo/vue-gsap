@@ -54,7 +54,7 @@ export default {
     position: absolute;
     width: 9rem;
     height: 9rem;
-    top: 20rem;
+    top: 20rem; /** アニメーション適用後に-1.2remに編集 */
 }
 
 @media (max-width: 640px) {
