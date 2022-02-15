@@ -1,5 +1,6 @@
 <template>
     <div class="banner">
+        <!--ここにtransitionを追加-->
         <div class="text-container">
             <div
                 v-for="(line, index) in lines"
@@ -12,11 +13,10 @@
                 </div>
             </div>
         </div>
-        <div class="shape-container">
-            <div> 
-                <img class="circle" src="../assets/circle.svg" alt="Circle"/>
-            </div>
+        <div class="shape-container"> 
+            <img class="circle" src="../assets/circle.svg" alt="Circle"/>
         </div>
+        <!--ここでtransitionをクローズ-->
     </div>
 </template>
 
