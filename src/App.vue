@@ -3,6 +3,8 @@
     <Header />
     <Banner />
     <Panels />
+    <Logo_CSS />
+    <Logo_GSAP />
   </div>
 </template>
 
@@ -10,13 +12,18 @@
 import Header from "./components/Header.vue"
 import Banner from "./components/Banner.vue"
 import Panels from "./components/Panels.vue"
+import Logo_CSS from "./components/Logo_CSS.vue"
+import Logo_GSAP from "./components/Logo_GSAP.vue"
+
 
 export default {
     name: "App",
     components: {
         Header,
         Banner,
-        Panels
+        Panels,
+        Logo_CSS,
+        Logo_GSAP
     }
 }
 </script>

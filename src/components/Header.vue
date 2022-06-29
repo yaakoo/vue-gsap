@@ -1,24 +1,76 @@
 <template>
     <div class="header">
         <!--ここからtransitionコードを開始-->
-        <div class="header-container">
-            <div class="header-title">
-                <span class="header-title-text">Vue x GSAP</span>
-            </div>
-            <div class="links-container">
-                <div class="links">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+        <!-- ヘッダーのアニメーション -->
+        <transition
+            appear
+            @before-enter="headerBeforeEnter"
+            @enter="headerEnter"
+        >
+            <div class="header-container">
+                <div class="header-title">
+                    <span class="header-title-text">Vue x GSAP</span>
                 </div>
+                <!-- リンクのアニメーション -->
+                <transition
+                    appear
+                    @before-enter="linksBeforeEnter"
+                    @enter="linksEnter"
+                >
+                    <div class="links-container">
+                        <div class="links">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </transition>
             </div>
-        </div>
+        </transition>
         <!--ここでtransitionをクローズ-->
     </div>
 </template>
 
 <script>
 // ここにGSAPのインポートとアニメーションのメソッドを追加
+import gsap from "gsap"
+
+export default {
+    setup() {
+        // ヘッダーが上から下がってくるアニメーション
+        const headerBeforeEnter = (el) => {
+            gsap.set(el, {
+                y: "-100%",
+                opacity: 0
+            })
+        }
+
+        const headerEnter = (el, done) => {
+            gsap.to(el, {
+                opacity: 1,
+                duration: 1,
+                y: "0",
+                ease: "Power0.easeOut",
+                onComplete: done
+            })
+        }
+
+        // リンクがフェイドインするアニメーション
+        const linksBeforeEnter = (el) => {
+            el.style.opacity = 0
+        }
+
+        const linksEnter = (el, done) => {
+            gsap.to(el, {
+                duration: 1,
+                opacity: 1,
+                delay: 1,
+                onComplete: done
+            })
+        }
+        return { headerBeforeEnter, linksBeforeEnter, headerEnter, linksEnter }
+    }
+}
 </script>
 
 <style scoped>
@@ -27,7 +79,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: #2dd4bf;
+    background-color: #e2680d;
     padding: 1.5rem;
 }
 

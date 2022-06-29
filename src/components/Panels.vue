@@ -1,7 +1,13 @@
 <template>
     <div class="panels">
         <!--ここからtransitionコードを開始-->
-        <div class="panels-grid">
+        <transition-group
+            tag="div"
+            class="panels-grid"
+            appear
+            @before-enter="panelsBeforeEnter"
+            @enter="panelsEnter"
+        >
             <div
                 v-for="(panel, index) in panels"
                 :key="panel.name"
@@ -10,7 +16,7 @@
             >
                 <div>{{ panel.name }}</div>
             </div>
-        </div>
+        </transition-group>
         <!--ここでtransitionをクローズ-->
     </div>
 </template>
@@ -18,6 +24,7 @@
 <script>
 import { ref } from "vue"
 // ここにGSAPのインポートを追加
+import gsap from "gsap"
 
 export default {
     setup() {
@@ -30,7 +37,24 @@ export default {
         ])
 
         // ここにアニメーションのメソッドを追加
-        return { panels }
+        // パネルのスタート設定
+        const panelsBeforeEnter = (el) => {
+            gsap.set(el, {
+                y: 100,
+                opacity: 0
+            })
+        }
+        // パネルのアニメーション設定
+        const panelsEnter = (el, done) => {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 1 + el.dataset.index * 0.2,
+                onComplete: done
+            })
+        }
+        return { panels, panelsBeforeEnter, panelsEnter }
     }
 }
 </script>
@@ -54,7 +78,7 @@ export default {
     height: 14rem;
     width: 12rem;
     text-align: center;
-    border: 4px solid #2dd4bf;
+    border: 4px solid #e2680d;
     border-radius: 0.375rem;
 }
 
